@@ -5,7 +5,8 @@ import CardSection from './CardSection';
 import Button from './Button';
 import { Actions } from 'react-native-router-flux';
 
-const AlbumDetail = ({ title, albumId }) => {
+const AlbumDetail = (props) => {
+  const { title, albumId } = props
   const {
     headerContentStyle,
     
