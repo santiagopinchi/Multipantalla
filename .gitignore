@@ -1,4 +1,6 @@
 node_modules
 build
 .idea
-android/local.propierties
+android/local.properties
+android/.gradle
+android/.idea
