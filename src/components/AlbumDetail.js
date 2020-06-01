@@ -9,7 +9,7 @@ const AlbumDetail = (props) => {
   const { title, albumId } = props
   const {
     headerContentStyle,
-    
+
     headerTextStyle,
     imageStyle
   } = styles;
@@ -19,12 +19,12 @@ const AlbumDetail = (props) => {
       <CardSection>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
-          
+
         </View>
       </CardSection>
 
       <CardSection>
-        <Button onPress={() => Actions.photoList({albumId:albumId})}>
+        <Button onPress={() => Actions.photoList({ albumId: albumId })}>
           See Now!
         </Button>
       </CardSection>

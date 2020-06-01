@@ -25,7 +25,7 @@ const PhotoDetail = ({ title, imageUrl, photoId }) => {
         </View>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
-          
+
         </View>
       </CardSection>
 
