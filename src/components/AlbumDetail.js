@@ -24,7 +24,7 @@ const AlbumDetail = (props) => {
       </CardSection>
 
       <CardSection>
-        <Button onPress={() => Actions.photoList({ albumId: albumId })}>
+        <Button onPress={() => Actions.photoList({albumId})}>
           See Now!
         </Button>
       </CardSection>

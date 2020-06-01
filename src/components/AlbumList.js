@@ -11,23 +11,24 @@ const AlbumList = () => {
       .then(response => setPhotoset(response.data.photosets.photoset))
   }, [])
 
-<<<<<<< HEAD
+  
   const renderAlbums = (album) => {
     return <AlbumDetail key={album.id} title={album.title._content}  albumId={album.id}  />
     
-=======
-  const renderAlbums = () => {
-    return photoset.map(album =>
-      <AlbumDetail key={album.id} title={album.title._content} albumId={album.id} />
-    );
->>>>>>> 419c0592f4ad9160d9c6bf667f416f8587400f0d
   }
 
   console.log(photoset);
 
-  if (!photoset) {
+    if (!photoset) { 
+			return (
+                <View style={{ flex: 1 }}>
+					<Text>
+                        {'loading'}
+					</Text>
+                </View>
+				);
+    }
     return (
-<<<<<<< HEAD
       <View style={{ flex: 1 }}>
         <FlatList
           data={photoset}
@@ -35,21 +36,7 @@ const AlbumList = () => {
           keyExtractor={item => item.id}
         />
       </View>
-=======
-      <Text>
-        Loading...
-      </Text>
->>>>>>> 419c0592f4ad9160d9c6bf667f416f8587400f0d
     );
-  }
-
-  return (
-    <View style={{ flex: 1 }}>
-      <ScrollView>
-        {renderAlbums()}
-      </ScrollView>
-    </View>
-  );
 }
 
 export default AlbumList;
