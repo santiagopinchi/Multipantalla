@@ -21,11 +21,11 @@ const AlbumList = () => {
 
     if (!photoset) { 
 			return (
-                <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
 					<Text>
-                        {'loading'}
+            {'loading'}
 					</Text>
-                </View>
+        </View>
 				);
     }
     return (

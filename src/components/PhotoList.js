@@ -17,28 +17,24 @@ const PhotoList = (props) => {
    }
     console.log(photos);
   
-
     if (!photos) { 
 			return (
-                <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
 					<Text>
-                        {'loading'}
+            {'loading'}
 					</Text>
-                </View>
+        </View>
 				);
     }
     return (
-        <View style={{ flex: 1 }}>
-            <FlatList
-              data={photos}
-              renderItem={({ item }) => renderAlbums(item)
-             }
-              keyExtractor={item => item.id}
-            />
-        </View>
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={photos}
+          renderItem={({ item }) => renderAlbums(item)}
+          keyExtractor={item => item.id}
+        />
+      </View>
     )
-
-
 }
 
 export default PhotoList;

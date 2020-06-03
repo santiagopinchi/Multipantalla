@@ -5,7 +5,9 @@ import CardSection from './CardSection';
 import Button from './Button';
 import { Actions } from 'react-native-router-flux';
 
-const PhotoDetail = ({ title, imageUrl, photoId }) => {
+const PhotoDetail = (props) => {
+  const { title, imageUrl, photoId } = props;
+
   const {
     thumbnailStyle,
     headerContentStyle,
@@ -25,7 +27,6 @@ const PhotoDetail = ({ title, imageUrl, photoId }) => {
         </View>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
-
         </View>
       </CardSection>
 

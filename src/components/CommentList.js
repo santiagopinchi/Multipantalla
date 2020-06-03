@@ -7,13 +7,14 @@ import Card from './Card';
 import CardSection from './CardSection';
 
 const CommentList = (props) => {
-  const { photoId, imageUrl } = props
+  const { photoId, imageUrl } = props;
+
   const [comments, setComments] = useState(null)
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get(` https://www.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photo_id=${photoId}&format=json&nojsoncallback=1`)
       .then(response => setComments(response.data.comments.comment))
-  },[])
+  }, [])
 
    const renderComments = (comment) => {
      return <CommentDetail  
@@ -25,20 +26,19 @@ const CommentList = (props) => {
             />
    }
   
-
     if (!comments) { 
-			return (
-                <View style={{ flex: 1 }}>
-					<Text>
-                        {'loading'}
-					</Text>
-                </View>
-				);
+		return (
+            <View style={{ flex: 1 }}>
+		    	<Text>
+                    {'loading'}
+			    </Text>
+            </View>
+		);
     }
 
     return (
         <View style={{ flex: 1 }}>
-             <Card>
+            <Card>
                 <CardSection>
                     <FlatList
                             data={comments}
@@ -47,6 +47,7 @@ const CommentList = (props) => {
                             keyExtractor={item => item.id}
                     />
                 </CardSection>
+                
                 <CardSection>
                     <Button onPress={() => Linking.openURL(imageUrl)}>
                         See in Browser!

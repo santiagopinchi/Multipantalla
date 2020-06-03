@@ -3,7 +3,9 @@ import { Text, View } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 
-const CommentDetail = ({ key, authorName, content, imageUrl, photoId }) => {
+const CommentDetail = (props) => {
+  const { key, authorName, content, imageUrl, photoId } = props;
+
   const {
     headerContentStyle,
     thumbnailContainerStyle,
