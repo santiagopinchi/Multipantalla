@@ -5,6 +5,7 @@ import CommentDetail from './CommentDetail';
 import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
+import Loading from './Loading';
 
 const CommentList = (props) => {
   const { photoId, imageUrl } = props;
@@ -27,13 +28,9 @@ const CommentList = (props) => {
    }
   
     if (!comments) { 
-		return (
-            <View style={{ flex: 1 }}>
-		    	<Text>
-                    {'loading'}
-			    </Text>
-            </View>
-		);
+			return
+        <Loading/>
+    }
     }
 
     return (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView, Text, View, FlatList } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
+import Loading from './Loading';
 
 const AlbumList = () => {
   const [photoset, setPhotoset] = useState(null)
@@ -20,13 +21,8 @@ const AlbumList = () => {
   console.log(photoset);
 
     if (!photoset) { 
-			return (
-        <View style={{ flex: 1 }}>
-					<Text>
-            {'loading'}
-					</Text>
-        </View>
-				);
+			return
+        <Loading/>
     }
     return (
       <View style={{ flex: 1 }}>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
+import Loading from './Loading';
 
 const PhotoList = (props) => {
   const { albumId } = props
@@ -18,13 +19,9 @@ const PhotoList = (props) => {
     console.log(photos);
   
     if (!photos) { 
-			return (
-        <View style={{ flex: 1 }}>
-					<Text>
-            {'loading'}
-					</Text>
-        </View>
-				);
+			return
+        <Loading/>
+    }
     }
     return (
       <View style={{ flex: 1 }}>
