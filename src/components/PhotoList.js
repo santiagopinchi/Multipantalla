@@ -3,6 +3,7 @@ import { Text, View, FlatList } from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
 import { getPhotos } from '../endpoints/Flickr';
+import Loading from './Loading';
 
 const PhotoList = (props) => {
   const { albumId } = props
@@ -12,33 +13,24 @@ const PhotoList = (props) => {
     getPhotos("137290658%40N08", albumId).then(response => setPhotos(response));
   }, [])
 
-   const renderAlbums = (photo) => {
-     return <PhotoDetail photoId={photo.id} key={photo.title} title={photo.title} imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
-   }
-    console.log(photos);
+  const renderAlbums = (photo) => {
+    return <PhotoDetail photoId={photo.id} key={photo.title} title={photo.title} imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
+  }
+  console.log(photos);
   
-
-    if (!photos) { 
-			return (
-                <View style={{ flex: 1 }}>
-					<Text>
-                        {'loading'}
-					</Text>
-                </View>
-				);
-    }
+  if (!photos) { 
+    return <Loading/>
+  }
+  else {
     return (
-        <View style={{ flex: 1 }}>
-            <FlatList
-              data={photos}
-              renderItem={({ item }) => renderAlbums(item)
-             }
-              keyExtractor={item => item.id}
-            />
-        </View>
-    )
-
-
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={photos}
+          renderItem={({ item }) => renderAlbums(item)}
+          keyExtractor={item => item.id}
+        />
+      </View>);
+  }
 }
 
 export default PhotoList;

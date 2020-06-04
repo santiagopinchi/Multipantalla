@@ -3,6 +3,7 @@ import { ScrollView, Text, View, FlatList } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 import { getPhotoSet } from '../endpoints/Flickr'
+import Loading from './Loading';
 
 const AlbumList = () => {
   const [photoset, setPhotoset] = useState(null)
@@ -15,20 +16,12 @@ const AlbumList = () => {
   
   const renderAlbums = (album) => {
     return <AlbumDetail key={album.id} title={album.title._content}  albumId={album.id}  />
-    
   }
 
-  console.log(photoset);
-
-    if (!photoset) { 
-			return (
-                <View style={{ flex: 1 }}>
-					<Text>
-                        {'loading'}
-					</Text>
-                </View>
-				);
-    }
+  if (!photoset) { 
+    return <Loading/>
+  }
+  else {
     return (
       <View style={{ flex: 1 }}>
         <FlatList
@@ -36,8 +29,8 @@ const AlbumList = () => {
           renderItem={({ item }) => renderAlbums(item) }
           keyExtractor={item => item.id}
         />
-      </View>
-    );
+      </View>);
+  }
 }
 
 export default AlbumList;
