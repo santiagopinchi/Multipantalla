@@ -6,7 +6,7 @@ import Button from './Button';
 import { Actions } from 'react-native-router-flux';
 
 const AlbumDetail = (props) => {
-  const { title, albumId } = props
+  const { title, albumId, user } = props
   const {
     headerContentStyle,
 
@@ -24,7 +24,7 @@ const AlbumDetail = (props) => {
       </CardSection>
 
       <CardSection>
-        <Button onPress={() => Actions.photoList({albumId})}>
+        <Button onPress={() => Actions.photoList({albumId, user})}>
           See Now!
         </Button>
       </CardSection>

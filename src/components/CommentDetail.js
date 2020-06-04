@@ -10,7 +10,7 @@ const CommentDetail = ({ key, authorName, content, imageUrl, photoId }) => {
     authorNameStyle,
     contentStyle,
   } = styles;
-
+console.log('jajex')
   return (
     <Card>
       <CardSection>
