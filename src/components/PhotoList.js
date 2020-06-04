@@ -19,8 +19,7 @@ const PhotoList = (props) => {
     console.log(photos);
   
     if (!photos) { 
-			return
-        <Loading/>
+			return <Loading/>
     }
     }
     return (

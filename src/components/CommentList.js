@@ -28,8 +28,7 @@ const CommentList = (props) => {
    }
   
     if (!comments) { 
-			return
-        <Loading/>
+			return<Loading/>
     }
     }
 

@@ -21,8 +21,7 @@ const AlbumList = () => {
   console.log(photoset);
 
     if (!photoset) { 
-			return
-        <Loading/>
+			return <Loading/>
     }
     return (
       <View style={{ flex: 1 }}>
