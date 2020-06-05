@@ -6,7 +6,12 @@ import Button from './Button';
 import { Actions } from 'react-native-router-flux';
 
 const AlbumDetail = (props) => {
+<<<<<<< HEAD
   const { title, albumId, user } = props
+=======
+  const { title, albumId } = props;
+
+>>>>>>> 195e855ad511ef32da510bc9a339ed263693755f
   const {
     headerContentStyle,
 
@@ -19,7 +24,6 @@ const AlbumDetail = (props) => {
       <CardSection>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
-
         </View>
       </CardSection>
 

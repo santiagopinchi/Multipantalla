@@ -6,7 +6,13 @@ import Button from './Button';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
+<<<<<<< HEAD
 const PhotoDetail = ({ title, imageUrl, photoId, setDates }) => {
+=======
+const PhotoDetail = (props) => {
+  const { title, imageUrl, photoId } = props;
+
+>>>>>>> 195e855ad511ef32da510bc9a339ed263693755f
   const {
     thumbnailStyle,
     headerContentStyle,
@@ -36,8 +42,11 @@ const PhotoDetail = ({ title, imageUrl, photoId, setDates }) => {
         </View>
         <View style={headerContentStyle}>
           <Text style={headerTextStyle}>{title}</Text>
+<<<<<<< HEAD
           {myDate && console.log(myDate.toString().slice(4,25))}
           {myDate && <Text style={headerTextStyle}>{'Date: '+myDate.toString().slice(4,25)}</Text>}
+=======
+>>>>>>> 195e855ad511ef32da510bc9a339ed263693755f
         </View>
       </CardSection>
 
