@@ -2,6 +2,6 @@ node_modules
 build
 .idea
 android/local.properties
-android/.gradle/*
+android/.gradle
 android/.idea
 android/app/app.iml
