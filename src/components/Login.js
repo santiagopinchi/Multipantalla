@@ -8,7 +8,7 @@ const styles = {
       flex: 1,
     },
     button: {
-      margin: 6,
+      margin: 10,
     },
 };
 
