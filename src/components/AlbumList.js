@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, View, FlatList } from 'react-native';
-import axios from 'axios';
+import { View, FlatList } from 'react-native';
 import AlbumDetail from './AlbumDetail';
 import { getPhotoSet } from '../endpoints/Flickr'
 import Loading from './Loading';
@@ -9,12 +8,11 @@ const AlbumList = () => {
   const [photoset, setPhotoset] = useState(null)
 
   useEffect(() => {
-    // La carga del ID de usuario deberia ser dinamica
     getPhotoSet("137290658%40N08").then(response => setPhotoset(response));
   }, [])
 
   
-  const renderAlbums = (album) => {
+  const renderAlbumDetail = (album) => {
     return <AlbumDetail key={album.id} title={album.title._content}  albumId={album.id}  />
   }
 
@@ -23,10 +21,10 @@ const AlbumList = () => {
   }
   else {
     return (
-      <View style={{ flex: 1 }}>
+      <View>
         <FlatList
           data={photoset}
-          renderItem={({ item }) => renderAlbums(item) }
+          renderItem={({ item }) => renderAlbumDetail(item) }
           keyExtractor={item => item.id}
         />
       </View>);

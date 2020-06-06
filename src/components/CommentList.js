@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, Linking } from 'react-native';
-import axios from 'axios';
+import { View, FlatList} from 'react-native';
 import CommentDetail from './CommentDetail';
-import Button from './Button';
-import Card from './Card';
-import CardSection from './CardSection';
 import { getComments } from '../endpoints/Flickr'
 import Loading from './Loading';
 
 const CommentList = (props) => {
-  const { photoId, imageUrl } = props;
+  const { photoId } = props;
 
   const [comments, setComments] = useState(null)
 
@@ -17,10 +13,8 @@ const CommentList = (props) => {
       getComments(photoId).then(response => setComments(response));
   }, [] )
 
-  const renderComments = (comment) => {
+  const renderCommentDetail = (comment) => {
     return <CommentDetail  
-              photoId={photoId}
-              imageUrl={imageUrl} 
               key={comment.id} 
               authorName={comment.authorname} 
               content={comment._content}
@@ -33,22 +27,12 @@ const CommentList = (props) => {
   else {
     return (
       <View style={{ flex: 1 }}>
-          <Card>
-              <CardSection>
-                  <FlatList
-                          data={comments}
-                          renderItem={({ item }) => renderComments(item)
-                          }
-                          keyExtractor={item => item.id}
-                  />
-              </CardSection>
-              
-              <CardSection>
-                  <Button onPress={() => Linking.openURL(imageUrl)}>
-                      See in Browser!
-                  </Button>
-              </CardSection>
-          </Card>
+        <FlatList
+                data={comments}
+                renderItem={({ item }) => renderCommentDetail(item)
+                }
+                keyExtractor={item => item.id}
+        />
       </View>);
   }
 }

@@ -1,51 +1,17 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import Card from './Card';
-import CardSection from './CardSection';
+import { Card, Title, Paragraph } from 'react-native-paper';
 
 const CommentDetail = (props) => {
-  const { key, authorName, content, imageUrl, photoId } = props;
-
-  const {
-    headerContentStyle,
-    thumbnailContainerStyle,
-    authorNameStyle,
-    contentStyle,
-  } = styles;
+  const { authorName, content} = props;
 
   return (
     <Card>
-      <CardSection>
-        <View style={thumbnailContainerStyle}>
-            <Text style={authorNameStyle}>{'Comentario De: ' +authorName}</Text>
-            <View style={headerContentStyle}>
-                <Text style={contentStyle}>{content}</Text>
-            </View>
-        </View>
-      </CardSection>
+      <Card.Content>
+        <Title>{ authorName }</Title>
+        <Paragraph>{ content }</Paragraph>
+      </Card.Content>
     </Card>
   );
-};
-
-const styles = {
-  headerContentStyle: {
-    flexDirection: 'column',
-    justifyContent: 'space-around'
-  },
-  authorNameStyle: {
-    fontSize: 18
-  },
-  contentStyle: {
-    fontSize: 14
-  },
-  thumbnailContainerStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-    borderColor: 'black',
-    backgroundColor: 'grey'
-  }
 };
 
 export default CommentDetail;

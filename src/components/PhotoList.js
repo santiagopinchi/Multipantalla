@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList } from 'react-native';
-import axios from 'axios';
+import { View, FlatList } from 'react-native';
 import PhotoDetail from './PhotoDetail';
 import { getPhotos } from '../endpoints/Flickr';
 import Loading from './Loading';
 
 const PhotoList = (props) => {
+
   const { albumId } = props
   const [photos, setPhotos] = useState(null)
 
@@ -13,8 +13,8 @@ const PhotoList = (props) => {
     getPhotos("137290658%40N08", albumId).then(response => setPhotos(response));
   }, [])
 
-  const renderAlbums = (photo) => {
-    return <PhotoDetail photoId={photo.id} key={photo.title} title={photo.title} imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
+  const renderPhoto = (photo) => {
+    return <PhotoDetail photoId={photo.id} key={photo.title} imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
   }
   console.log(photos);
   
@@ -26,7 +26,7 @@ const PhotoList = (props) => {
       <View style={{ flex: 1 }}>
         <FlatList
           data={photos}
-          renderItem={({ item }) => renderAlbums(item)}
+          renderItem={({ item }) => renderPhoto(item)}
           keyExtractor={item => item.id}
         />
       </View>);
