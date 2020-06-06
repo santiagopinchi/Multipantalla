@@ -3,15 +3,25 @@ import { View, FlatList} from 'react-native';
 import CommentDetail from './CommentDetail';
 import { getComments } from '../endpoints/Flickr'
 import Loading from './Loading';
+import NotFound from './NotFoundError';
 
 const CommentList = (props) => {
   const { photoId } = props;
 
-  const [comments, setComments] = useState(null)
+  const [comments, setComments] = useState(null);
+  const [statusResponse, setStatusresponse] = useState(null);
 
-  useEffect( () => {
-      getComments(photoId).then(response => setComments(response));
-  }, [] )
+  useEffect(() => {
+    getComments(photoId).then( ({status, response}) => {
+      if(status) {
+        setComments(response);
+        setStatusresponse("OK");
+      }
+      else {
+        setStatusresponse("FAIL")
+      }
+    })
+  }, [])
 
   const renderCommentDetail = (comment) => {
     return <CommentDetail  
@@ -22,19 +32,25 @@ const CommentList = (props) => {
           />
   }
   
-  if (!comments) { 
+  if (!statusResponse && !comments) { 
     return <Loading/>
   }
   else {
-    return (
-      <View style={{ flex: 1 }}>
-        <FlatList
-                data={comments}
-                renderItem={({ item }) => renderCommentDetail(item)
-                }
-                keyExtractor={item => item.id}
-        />
-      </View>);
+    if(statusResponse === "OK") {
+      return (
+        <View style={{ flex: 1 }}>
+          <FlatList
+                  data={comments}
+                  renderItem={({ item }) => renderCommentDetail(item)
+                  }
+                  keyExtractor={item => item.id}
+          />
+        </View>);
+    }
+    else {
+      return <NotFound />
+    }
+    
   }
 }
 

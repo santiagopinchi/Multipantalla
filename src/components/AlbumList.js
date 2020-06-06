@@ -3,31 +3,48 @@ import { View, FlatList } from 'react-native';
 import AlbumDetail from './AlbumDetail';
 import { getPhotoSet } from '../endpoints/Flickr'
 import Loading from './Loading';
+import NotFound from './NotFoundError';
 
-const AlbumList = () => {
-  const [photoset, setPhotoset] = useState(null)
+const AlbumList = (props) => {
+
+  const { userId } = props;
+
+  const [photoset, setPhotoset] = useState(null);
+  const [statusResponse, setStatusresponse] = useState(null);
 
   useEffect(() => {
-    getPhotoSet("137290658%40N08").then(response => setPhotoset(response));
+    getPhotoSet(userId).then( ({status, response}) => {
+      if(status) {
+        setPhotoset(response);
+        setStatusresponse("OK");
+      }
+      else {
+        setStatusresponse("FAIL")
+      }
+    })
   }, [])
-
   
   const renderAlbumDetail = (album) => {
-    return <AlbumDetail key={album.id} title={album.title._content}  albumId={album.id}  />
+    return <AlbumDetail key={album.id} userId={userId} title={album.title._content} albumId={album.id}  />
   }
 
-  if (!photoset) { 
+  if (!statusResponse && !photoset) { 
     return <Loading/>
   }
   else {
-    return (
-      <View>
-        <FlatList
-          data={photoset}
-          renderItem={({ item }) => renderAlbumDetail(item) }
-          keyExtractor={item => item.id}
-        />
-      </View>);
+    if(statusResponse === "OK") {
+      return (
+        <View>
+          <FlatList
+            data={photoset}
+            renderItem={({ item }) => renderAlbumDetail(item) }
+            keyExtractor={item => item.id}
+          />
+        </View>);
+    }
+    else {
+      return <NotFound />
+    }
   }
 }
 

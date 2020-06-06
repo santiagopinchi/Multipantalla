@@ -4,7 +4,7 @@ import { Card, Button, Avatar} from 'react-native-paper';
 
 const AlbumDetail = (props) => {
 
-  const { title, albumId } = props;
+  const { userId, title, albumId } = props;
 
   const leftContent = props => {
     return (<Avatar.Icon {...props} icon="folder" />);
@@ -14,7 +14,7 @@ const AlbumDetail = (props) => {
     <Card>
       <Card.Title title={ title } left={ leftContent }/>
       <Card.Actions>
-        <Button onPress={ () => Actions.photoList({albumId})}>SEE NOW</Button>
+        <Button onPress={ () => Actions.photoList({userId, albumId})}>SEE NOW</Button>
       </Card.Actions>
     </Card>
   );
