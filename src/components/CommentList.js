@@ -3,7 +3,7 @@ import { View, FlatList} from 'react-native';
 import CommentDetail from './CommentDetail';
 import { getComments } from '../endpoints/Flickr'
 import Loading from './Loading';
-import NotFound from './NotFoundError';
+import Error from './Error';
 
 const CommentList = (props) => {
   const { photoId } = props;
@@ -48,7 +48,7 @@ const CommentList = (props) => {
         </View>);
     }
     else {
-      return <NotFound />
+      return <Error />
     }
     
   }

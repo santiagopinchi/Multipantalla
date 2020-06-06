@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Title, Paragraph } from 'react-native-paper';
+import { Card, Paragraph } from 'react-native-paper';
 
 const CommentDetail = (props) => {
 

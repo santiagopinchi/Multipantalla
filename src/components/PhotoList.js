@@ -3,8 +3,8 @@ import { View, FlatList } from 'react-native';
 import PhotoDetail from './PhotoDetail';
 import { getPhotos } from '../endpoints/Flickr';
 import Loading from './Loading';
-import { Card, Actions, Button } from 'react-native-paper';
-import NotFound from './NotFoundError';
+import { Card, Button } from 'react-native-paper';
+import Error from './Error';
 
 const PhotoList = (props) => {
 
@@ -92,24 +92,28 @@ const PhotoList = (props) => {
         return (
           <View style={{ flex: 1 }}>
             <Card>
+              <Card.Actions textAlign="center">
                 <Button onPress={() => {
                   setOrderBy('DATE')
                   orderArrayBy('DATE')
-                }}>
-                  {'Order by Date'}
+                }
+                }>
+                  Order by Date
                 </Button>
                 <Button onPress={() => {
                   setOrderBy('NAME')
                   orderArrayBy('NAME')
-                }}>
+                }
+                }>
                   Order by Name
-                  </Button>
+                </Button>
                 <Button onPress={() => {
                   changeOrder()
                   setAsc(!asc)
                 }}>
                   {asc ? 'asc' : 'desc'}
                 </Button>
+              </Card.Actions>
             </Card>
             <FlatList
               data={photos}
@@ -124,26 +128,28 @@ const PhotoList = (props) => {
         return (
           <View style={{ flex: 1 }}>
             <Card>
+              <Card.Actions>
                 <Button onPress={() => {
                   setOrderBy('DATE')
                   orderArrayBy('DATE')
                 }
                 }>
                   Order by Date
-                  </Button>
+                </Button>
                 <Button onPress={() => {
                   setOrderBy('NAME')
                   orderArrayBy('NAME')
                 }
                 }>
                   Order by Name
-                  </Button>
+                </Button>
                 <Button onPress={() => {
                   changeOrder()
                   setAsc(!asc)
                 }}>
                   {asc ? 'asc' : 'desc'}
                 </Button>
+              </Card.Actions>
             </Card>
             <FlatList
               data={photosWithDate}
@@ -156,7 +162,7 @@ const PhotoList = (props) => {
       }
     }
     else {
-      return <NotFound />
+      return <Error />
     }
   }
 }

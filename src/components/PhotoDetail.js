@@ -3,7 +3,7 @@ import { Linking } from 'react-native';
 import { Card, Button } from 'react-native-paper';
 import { Actions } from 'react-native-router-flux';
 import { getInfo } from '../endpoints/Flickr';
-import NotFound from './NotFoundError';
+import Error from './Error';
 import Loading from './Loading';
 
 const PhotoDetail = (props) => {
@@ -42,7 +42,7 @@ const PhotoDetail = (props) => {
     );
   }
   else {
-    return <NotFound />
+    return <Error />
   }
 };
 

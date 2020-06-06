@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native';
 import AlbumDetail from './AlbumDetail';
 import { getPhotoSet } from '../endpoints/Flickr'
 import Loading from './Loading';
-import NotFound from './NotFoundError';
+import Error from './Error';
 
 const AlbumList = (props) => {
 
@@ -19,7 +19,7 @@ const AlbumList = (props) => {
         setStatusresponse("OK");
       }
       else {
-        setStatusresponse("FAIL")
+        setStatusresponse("FAIL");
       }
     })
   }, [])
@@ -43,7 +43,7 @@ const AlbumList = (props) => {
         </View>);
     }
     else {
-      return <NotFound />
+      return <Error />
     }
   }
 }

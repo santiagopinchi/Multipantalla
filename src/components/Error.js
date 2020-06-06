@@ -1,13 +1,14 @@
 import React from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
+import { Text } from 'react-native-paper';
 
-const NotFound = () => {
+const Error = () => {
   return (
     <View style={styles.container}>
       <View>
         <Image
           style={{
-            resizeMode: "cover"
+            resizeMode: "contain",
           }}
           source={require('../images/error.png')}
         />
@@ -25,6 +26,6 @@ const styles = StyleSheet.create({
       height: "100%",
       textAlign: "center"
     }
-  });
+});
  
-export default NotFound;
+export default Error;

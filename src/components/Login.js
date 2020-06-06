@@ -8,7 +8,7 @@ const styles = {
       flex: 1,
     },
     button: {
-      margin: 4,
+      margin: 6,
     },
 };
 
@@ -17,7 +17,7 @@ const Login = () => {
     const USER_PROFE = "137290658%40N08";
     const OTHER_USER = "188681120@N04";
 
-    const [userInput, setUserInput] = useState(USER_PROFE);
+    const [userInput, setUserInput] = useState("");
 
     return (
         <ScrollView style={styles.container}>
