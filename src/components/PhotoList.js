@@ -14,7 +14,7 @@ const PhotoList = (props) => {
   }, [])
 
   const renderPhoto = (photo) => {
-    return <PhotoDetail photoId={photo.id} key={photo.title} imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
+    return <PhotoDetail photoId={photo.id} key={photo.title} title={photo.title} imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
   }
   console.log(photos);
   
