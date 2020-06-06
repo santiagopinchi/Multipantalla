@@ -21,7 +21,7 @@ const PhotoDetail = ({ title, imageUrl, photoId, setDates }) => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photo_id=${photoId}&format=json&nojsoncallback=1`)
           .then(response => {
             setMyDate(new Date(response.data.photo.dates.posted*1000))
-          setDates(prevDates => [...prevDates, new Date(response.data.photo.dates.posted*1000)])
+          setDates(prevDates => [...prevDates, new Date(response.data.photo.dates.posted*1000).toString().slice(4,25)])
         })
   }, [])
 

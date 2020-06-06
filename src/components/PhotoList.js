@@ -14,7 +14,7 @@ const PhotoList = (props) => {
   const [dates, setDates] = useState([])
   const [photosWithDate, setPhotosWithDates] = useState(null)
   const [ordered, setOrderer] = useState(false)
-  const [orderBy, setOrderBy] = useState(null)
+  const [orderBy, setOrderBy] = useState('NAME')
   const [asc, setAsc] = useState(false)
   //antiguo user: 137290658%40N08
   useEffect(() => {
@@ -26,10 +26,11 @@ const PhotoList = (props) => {
 
   useEffect(() => {
     if(photos){
+      console.log(dates, 'DATES')
       console.log(photos.length === dates.length,'RESULT')
       if(photos.length === dates.length){
         let array = photos.map((item, index) => ({
-          ...item, date: dates[index].value
+          ...item, date: dates[index]
             })
           )
           console.log(array,'EL ARRAY')
@@ -43,17 +44,22 @@ const PhotoList = (props) => {
     orderArrayBy(orderBy)
   }
   const orderArrayBy = orderType => {
+    console.log(orderType, 'como se ordena')
     if(photosWithDate){
+      console.log(photosWithDate,'phowd')
     if(orderType === 'DATE'){
       console.log(photosWithDate,'BOTON')
       setPhotosWithDates(photosWithDate.sort(function (a, b) {
-        if (a.date > b.date) {
+        if (new Date(a.date) > new Date(b.date)) {
+          console.log(a.date, 'es mayor que ', b.date)
           return !asc? 1 : -1;
         }
-        if (a.date < b.date) {
+        if (new Date(a.date) < new Date(b.date)) {
+          console.log(a.date, 'es menor que ', b.date)
           return !asc? -1 : 1;
         }
         // a must be equal to b
+        console.log(a.date, 'es igual a ', b.date)
         return 0;
       })
       )
@@ -63,11 +69,14 @@ const PhotoList = (props) => {
       console.log(photosWithDate,'BOTON N')
       setPhotosWithDates(photosWithDate.sort(function (a, b) {
         if (a.title > b.title) {
+          console.log(a.title,' es mayor que ', b.title)
           return !asc? 1 : -1;
         }
         if (a.title < b.title) {
+          console.log(a.title,' es menor que ', b.title)
           return !asc? -1 : 1;
         }
+        console.log(a.title, 'es igual a ', b.title)
         // a must be equal to b
         return 0;
       })
@@ -102,7 +111,7 @@ const PhotoList = (props) => {
                   setOrderBy('DATE')
                   orderArrayBy('DATE')
                   }}>
-                  Order by Date
+                  {'Order by Date'}
                 </Button>
                 <Button onPress={() => {
                   setOrderBy('NAME')
@@ -111,6 +120,7 @@ const PhotoList = (props) => {
                   Order by Name
                 </Button>
                 <Button onPress={() => {
+                  console.log(orderBy, 'DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEA')
                   changeOrder()
                   setAsc(!asc)
                   }}>
@@ -127,15 +137,21 @@ const PhotoList = (props) => {
           </View>
         )
     }
-    if(photosWithDate && ordered){
+    if(photosWithDate && ordered && dates){
       return (
           <View style={{ flex: 1 }}>
             <Card>
               <CardSection>
-                <Button onPress={() => orderArrayBy('DATE')}>
+                <Button onPress={() => {
+                  setOrderBy('DATE')
+                  orderArrayBy('DATE')}
+                }>
                   Order by Date
                 </Button>
-                <Button onPress={() => orderArrayBy('NAME')}>
+                <Button onPress={() => {
+                  setOrderBy('NAME')
+                  orderArrayBy('NAME')}
+                }>
                   Order by Name
                 </Button>
                 <Button onPress={() => {
