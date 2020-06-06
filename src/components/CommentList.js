@@ -13,7 +13,6 @@ const CommentList = (props) => {
 
   const [comments, setComments] = useState(null)
 
-<<<<<<< HEAD
   useEffect(()=>{
     axios.get(` https://www.flickr.com/services/rest/?method=flickr.photos.comments.getList&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photo_id=${photoId}&format=json&nojsoncallback=1`)
       .then(response => {
@@ -22,11 +21,6 @@ const CommentList = (props) => {
       })
       .catch(error => console.log(error,'error'))
   },[])
-=======
-  useEffect( () => {
-      getComments(photoId).then(response => setComments(response));
-  }, [] )
->>>>>>> 195e855ad511ef32da510bc9a339ed263693755f
 
   const renderComments = (comment) => {
     return <CommentDetail  

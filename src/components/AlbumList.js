@@ -11,7 +11,6 @@ const AlbumList = (props) => {
   //antiguo user: 137290658%40N08
 
   useEffect(() => {
-<<<<<<< HEAD
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=6e8a597cb502b7b95dbd46a46e25db8d&user_id=${user}&format=json&nojsoncallback=1`)
       .then(response => setPhotoset(response.data.photosets.photoset))
   }, [user])
@@ -20,15 +19,6 @@ const AlbumList = (props) => {
   const renderAlbums = (album) => {
     return <AlbumDetail user={user} key={album.id} title={album.title._content}  albumId={album.id}  />
     
-=======
-    // La carga del ID de usuario deberia ser dinamica
-    getPhotoSet("137290658%40N08").then(response => setPhotoset(response));
-  }, [])
-
-  
-  const renderAlbums = (album) => {
-    return <AlbumDetail key={album.id} title={album.title._content}  albumId={album.id}  />
->>>>>>> 195e855ad511ef32da510bc9a339ed263693755f
   }
 
   if (!photoset) { 

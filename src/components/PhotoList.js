@@ -2,14 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import axios from 'axios';
 import PhotoDetail from './PhotoDetail';
-<<<<<<< HEAD
 import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
-=======
 import { getPhotos } from '../endpoints/Flickr';
 import Loading from './Loading';
->>>>>>> 195e855ad511ef32da510bc9a339ed263693755f
 
 const PhotoList = (props) => {
   const { albumId, user } = props
@@ -21,7 +18,6 @@ const PhotoList = (props) => {
   const [asc, setAsc] = useState(false)
   //antiguo user: 137290658%40N08
   useEffect(() => {
-<<<<<<< HEAD
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=6e8a597cb502b7b95dbd46a46e25db8d&photoset_id=${albumId}&user_id=${user}&format=json&nojsoncallback=1`)
       .then(response => {
         setPhotos(response.data.photoset.photo)
@@ -160,29 +156,6 @@ const PhotoList = (props) => {
         )
     }
 
-=======
-    getPhotos("137290658%40N08", albumId).then(response => setPhotos(response));
-  }, [])
-
-  const renderAlbums = (photo) => {
-    return <PhotoDetail photoId={photo.id} key={photo.title} title={photo.title} imageUrl={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} />
-  }
-  console.log(photos);
-  
-  if (!photos) { 
-    return <Loading/>
-  }
-  else {
-    return (
-      <View style={{ flex: 1 }}>
-        <FlatList
-          data={photos}
-          renderItem={({ item }) => renderAlbums(item)}
-          keyExtractor={item => item.id}
-        />
-      </View>);
-  }
->>>>>>> 195e855ad511ef32da510bc9a339ed263693755f
 }
 
 export default PhotoList;
