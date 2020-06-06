@@ -17,6 +17,7 @@ const CommentList = (props) => {
     return <CommentDetail  
               key={comment.id} 
               authorName={comment.authorname} 
+              date={comment.datecreate}
               content={comment._content}
           />
   }
