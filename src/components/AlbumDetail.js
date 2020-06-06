@@ -1,16 +1,18 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
-import { Card, Title, Button} from 'react-native-paper';
+import { Card, Button, Avatar} from 'react-native-paper';
 
 const AlbumDetail = (props) => {
 
   const { title, albumId } = props;
 
+  const leftContent = props => {
+    return (<Avatar.Icon {...props} icon="folder" />);
+  } 
+
   return (
     <Card>
-      <Card.Content>
-        <Title>{ title }</Title>
-      </Card.Content>
+      <Card.Title title={ title } left={ leftContent }/>
       <Card.Actions>
         <Button onPress={ () => Actions.photoList({albumId})}>SEE NOW</Button>
       </Card.Actions>
